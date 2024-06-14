@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile configure install
+DEPEND=pvr-gpu? ( sys-firmware/vf2-pvr-firmware ) wave5? ( sys-firmware/vf2-wave5-firmware )
+EAPI=8
+IUSE=+pvr-gpu +wifi +bluetooth +wave5
+KEYWORDS=~riscv
+RDEPEND=pvr-gpu? ( sys-firmware/vf2-pvr-firmware ) wave5? ( sys-firmware/vf2-wave5-firmware )
+SLOT=0
+SRC_URI=https://github.com/starfive-tech/buildroot/archive/refs/tags/JH7110_VF2_515_v5.11.3.tar.gz -> buildroot-JH7110_VF2_515_v5.11.3.tar.gz
+_md5_=404b443b3a198215c9b9490ccf7c6969

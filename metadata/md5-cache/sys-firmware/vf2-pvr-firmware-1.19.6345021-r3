@@ -1,0 +1,7 @@
+DEFINED_PHASES=install
+DESCRIPTION=Firmware for the IMG_GPU provided by starfive
+EAPI=8
+KEYWORDS=~riscv
+SLOT=0
+SRC_URI=https://github.com/starfive-tech/soft_3rdpart/raw/JH7110_VisionFive2_devel/IMG_GPU/out/img-gpu-powervr-bin-1.19.6345021.tar.gz
+_md5_=77fed1094066052e38f203a445122223

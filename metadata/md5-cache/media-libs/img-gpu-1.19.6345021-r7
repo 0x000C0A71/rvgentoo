@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DEPEND=>=sys-firmware/vf2-pvr-firmware-1.19.6345021
+EAPI=8
+IUSE=+testbins
+KEYWORDS=~riscv
+RDEPEND=>=sys-firmware/vf2-pvr-firmware-1.19.6345021
+SLOT=0
+SRC_URI=https://github.com/starfive-tech/soft_3rdpart/raw/JH7110_VisionFive2_devel/IMG_GPU/out/img-gpu-powervr-bin-1.19.6345021.tar.gz
+_md5_=1d03a966bef79f39090459903c83b5b3
