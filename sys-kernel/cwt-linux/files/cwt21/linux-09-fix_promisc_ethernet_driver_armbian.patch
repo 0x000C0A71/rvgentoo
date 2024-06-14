@@ -1,0 +1,30 @@
+#https://forum.armbian.com/topic/26518-network-bridge-fails-to-initialize-vlan-in-promisc-mode-not-supported/
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
+@@ -450,12 +450,6 @@ static int dwmac4_add_hw_vlan_rx_fltr(struct net_device *dev,
+ 	if (vid > 4095)
+ 		return -EINVAL;
+ 
+-	if (hw->promisc) {
+-		netdev_err(dev,
+-			   "Adding VLAN in promisc mode not supported\n");
+-		return -EPERM;
+-	}
+-
+ 	/* Single Rx VLAN Filter */
+ 	if (hw->num_vlan == 1) {
+ 		/* For single VLAN filter, VID 0 means VLAN promiscuous */
+@@ -505,12 +499,6 @@ static int dwmac4_del_hw_vlan_rx_fltr(struct net_device *dev,
+ {
+ 	int i, ret = 0;
+ 
+-	if (hw->promisc) {
+-		netdev_err(dev,
+-			   "Deleting VLAN in promisc mode not supported\n");
+-		return -EPERM;
+-	}
+-
+ 	/* Single Rx VLAN Filter */
+ 	if (hw->num_vlan == 1) {
+ 		if ((hw->vlan_filter[0] & GMAC_VLAN_TAG_VID) == vid) {

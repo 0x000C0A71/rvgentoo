@@ -1,0 +1,14 @@
+diff --git a/drivers/net/wireless/eswin/fullmac/Makefile b/drivers/net/wireless/eswin/fullmac/Makefile
+index 8479e35ac1bc..f2a77f2d3542 100644
+--- a/drivers/net/wireless/eswin/fullmac/Makefile
++++ b/drivers/net/wireless/eswin/fullmac/Makefile
+@@ -61,7 +61,9 @@ EXTRA_CFLAGS+=-Wno-declaration-after-statement
+ EXTRA_CFLAGS+=-Wno-format
+ EXTRA_CFLAGS+=-Wno-unused-variable
+ EXTRA_CFLAGS+=-Wno-misleading-indentation
++ifneq ($(LLVM), 1)
+ EXTRA_CFLAGS+=-Wno-maybe-uninitialized
++endif
+ #EXTRA_CFLAGS+=-Wno-int-conversion
+ #EXTRA_CFLAGS+=-Wno-unused-function
+ #EXTRA_CFLAGS+=-Wno-undef

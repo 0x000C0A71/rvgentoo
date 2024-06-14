@@ -1,0 +1,23 @@
+From 6016ebda438609483bd4014343723b408caf660a Mon Sep 17 00:00:00 2001
+From: Estela ad Astra <i@estela.cn>
+Date: Fri, 10 Mar 2023 05:18:41 +0800
+Subject: [PATCH] Fix broken tda998x for VF2
+
+Signed-off-by: Estela ad Astra <i@estela.cn>
+---
+ drivers/gpu/drm/i2c/tda998x_pin.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/i2c/tda998x_pin.c b/drivers/gpu/drm/i2c/tda998x_pin.c
+index 995efc8e55ed6..48a616a7e8517 100644
+--- a/drivers/gpu/drm/i2c/tda998x_pin.c
++++ b/drivers/gpu/drm/i2c/tda998x_pin.c
+@@ -30,7 +30,7 @@ static const struct of_device_id tda998x_rgb_dt_ids[] = {
+ 	{ .compatible = "starfive,tda998x_rgb_pin", },
+ 	{ /* sentinel */ },
+ };
+-MODULE_DEVICE_TABLE(of, starfive_drm_dt_ids);
++MODULE_DEVICE_TABLE(of, tda998x_rgb_dt_ids);
+ 
+ static struct platform_driver starfive_drm_platform_driver = {
+ 	.probe = starfive_drm_platform_probe,

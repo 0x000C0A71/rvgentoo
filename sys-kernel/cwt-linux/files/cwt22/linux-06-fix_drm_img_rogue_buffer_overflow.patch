@@ -1,0 +1,23 @@
+diff -r 82b5f4e72e87 drivers/gpu/drm/img/img-rogue/services/server/devices/rogue/rgxdebug.c
+--- a/drivers/gpu/drm/img/img-rogue/services/server/devices/rogue/rgxdebug.c	Sun May 19 20:06:36 2024 +0700
++++ b/drivers/gpu/drm/img/img-rogue/services/server/devices/rogue/rgxdebug.c	Mon May 20 10:41:21 2024 +0700
+@@ -2360,6 +2360,7 @@
+ 							RGXMEM_PROCESS_INFO *psProcInfo)
+ {
+ 	IMG_UINT32 i, j;
++	const char *unknown_process_name = "(unknown)";
+ 
+ 	for (i = 0; i < DEVICEMEM_HISTORY_QUERY_INDEX_COUNT; i++)
+ 	{
+@@ -2373,9 +2374,8 @@
+ 								psProcInfo);
+ 			if (!bFound)
+ 			{
+-				OSStringLCopy(psProcInfo->szProcessName,
+-								"(unknown)",
+-								sizeof(psProcInfo->szProcessName));
++				strncpy(psProcInfo->szProcessName, unknown_process_name, sizeof(psProcInfo->szProcessName) - 1);
++				psProcInfo->szProcessName[sizeof(psProcInfo->szProcessName) - 1] = '\0';
+ 			}
+ 		}
+ 	}

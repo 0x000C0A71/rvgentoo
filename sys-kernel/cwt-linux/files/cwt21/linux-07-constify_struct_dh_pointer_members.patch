@@ -1,0 +1,37 @@
+From cefd33eb124420200d0c17ce9fdc507608cc4176 Mon Sep 17 00:00:00 2001
+From: Estela ad Astra <i@estela.cn>
+Date: Sat, 18 Mar 2023 23:22:28 +0800
+Subject: [PATCH] crypto: dh - constify struct dh's pointer members
+
+struct dh contains several pointer members corresponding to DH parameters:
+->key, ->p and ->g. A subsequent commit will introduce "dh" wrapping
+templates of the form "ffdhe2048(dh)", "ffdhe3072(dh)" and so on in order
+to provide built-in support for the well-known safe-prime ffdhe group
+parameters specified in RFC 7919. These templates will need to set the
+group parameter related members of the (serialized) struct dh instance
+passed to the inner "dh" kpp_alg instance, i.e. ->p and ->g, to some
+constant, static storage arrays.
+
+Turn the struct dh pointer members' types into "pointer to const" in
+preparation for this.
+
+Signed-off-by: Nicolai Stange <nstange@suse.de>
+Reviewed-by: Hannes Reinecke <hare@suse.de>
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ security/keys/dh.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/security/keys/dh.c b/security/keys/dh.c
+index 1abfa70ed6e10..a58f6fb9f6dbf 100644
+--- a/security/keys/dh.c
++++ b/security/keys/dh.c
+@@ -14,7 +14,7 @@
+ #include <keys/user-type.h>
+ #include "internal.h"
+ 
+-static ssize_t dh_data_from_key(key_serial_t keyid, void **data)
++static ssize_t dh_data_from_key(key_serial_t keyid, const void **data)
+ {
+ 	struct key *key;
+ 	key_ref_t key_ref;

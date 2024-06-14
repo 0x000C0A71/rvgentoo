@@ -1,0 +1,14 @@
+diff -r 48a30f62c854 arch/riscv/Makefile
+--- a/arch/riscv/Makefile	Tue Mar 28 15:51:42 2023 +0700
++++ b/arch/riscv/Makefile	Tue Mar 28 16:03:10 2023 +0700
+@@ -58,6 +58,10 @@
+ toolchain-need-zicsr-zifencei := $(call cc-option-yn, -march=$(riscv-march-y)_zicsr_zifencei)
+ riscv-march-$(toolchain-need-zicsr-zifencei) := $(riscv-march-y)_zicsr_zifencei
+ 
++# Dirty hack for "b" extension on Sifive-U74
++toolchain-has-zba-zbb := $(call cc-option-yn, -march=$(riscv-march-y)_zba_zbb)
++riscv-march-$(toolchain-has-zba-zbb) := $(riscv-march-y)_zba_zbb
++
+ KBUILD_CFLAGS += -march=$(subst fd,,$(riscv-march-y))
+ KBUILD_AFLAGS += -march=$(riscv-march-y)
+ 

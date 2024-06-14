@@ -1,0 +1,3 @@
+KERNEL=="jpu", OWNER="root", GROUP="video", MODE="0660"
+KERNEL=="vdec", OWNER="root", GROUP="video", MODE="0660"
+KERNEL=="venc", OWNER="root", GROUP="video", MODE="0660"

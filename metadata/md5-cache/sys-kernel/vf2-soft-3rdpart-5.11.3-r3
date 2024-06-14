@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst postrm preinst setup
+DEPEND=kernel_linux? ( sys-apps/kmod[tools] dist-kernel? ( virtual/dist-kernel:= ) ) kernel_linux? ( virtual/linux-sources virtual/libelf )
+EAPI=8
+INHERIT=linux-mod
+IUSE=dist-kernel +modules-sign dist-kernel
+KEYWORDS=~riscv
+RDEPEND=kernel_linux? ( sys-apps/kmod[tools] dist-kernel? ( virtual/dist-kernel:= ) )
+SLOT=0
+SRC_URI=https://github.com/starfive-tech/soft_3rdpart/archive/refs/tags/JH7110_VF2_515_v5.11.3.tar.gz -> soft_3rdpart-JH7110_VF2_515_v5.11.3.tar.gz
+_eclasses_=toolchain-funcs	e56c7649b804f051623c8bc1a1c44084	multilib	c19072c3cd7ac5cb21de013f7e9832e0	linux-info	e967b81f54be6f49f4219a57ce7db437	multiprocessing	30ead54fa2e2b5f9cd4e612ffc34d0fe	linux-mod	000f3723e8e062061ee523106e69f84a
+_md5_=9a3a655c27ef922c320bb4c1952ce2d3

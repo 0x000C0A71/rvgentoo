@@ -1,0 +1,15 @@
+diff -r 34dca25d31b1 drivers/gpu/drm/img/img-rogue/Makefile
+--- a/drivers/gpu/drm/img/img-rogue/Makefile	Sun May 19 01:12:14 2024 +0700
++++ b/drivers/gpu/drm/img/img-rogue/Makefile	Sun May 19 11:43:11 2024 +0700
+@@ -73,7 +73,11 @@
+ #include $(OUT)/config_kernel.mk
+ include $(srctree)/$(src)/config_kernel.mk
+ 
++ifneq ($(and $(filter notintermediate, $(.FEATURES)),$(filter-out 4.4,$(MAKE_VERSION))),)
++.NOTINTERMEDIATE:
++else
+ .SECONDARY:
++endif
+ 
+ define symlink-source-file
+ @if [ ! -e $(dir $@) ]; then mkdir -p $(dir $@); fi

@@ -1,0 +1,12 @@
+diff -r 39bb6bf8cd14 -r ff7d4eba2324 codaj12/jdi/linux/driver/Makefile
+--- a/codaj12/jdi/linux/driver/Makefile	Wed Mar 29 09:23:02 2023 +0700
++++ b/codaj12/jdi/linux/driver/Makefile	Wed Mar 29 09:41:11 2023 +0700
+@@ -27,7 +27,7 @@
+ 
+ else
+ 
+-KERNELDIR := ../../../../../work/linux/
++KERNELDIR ?= /lib/modules/$(shell uname -r)/build
+ PWD	  := $(shell pwd)
+ 
+ default:

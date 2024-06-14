@@ -1,0 +1,13 @@
+diff -r fbe24509c186 arch/riscv/Makefile
+--- a/arch/riscv/Makefile	Sat Mar 16 09:59:35 2024 +0700
++++ b/arch/riscv/Makefile	Sat Mar 16 10:18:04 2024 +0700
+@@ -80,6 +80,9 @@
+ 
+ KBUILD_CFLAGS_MODULE += $(call cc-option,-mno-relax)
+ 
++# Avoid generating .eh_frame sections.
++KBUILD_CFLAGS += -fno-asynchronous-unwind-tables -fno-unwind-tables
++
+ # GCC versions that support the "-mstrict-align" option default to allowing
+ # unaligned accesses.  While unaligned accesses are explicitly allowed in the
+ # RISC-V ISA, they're emulated by machine mode traps on all extant
