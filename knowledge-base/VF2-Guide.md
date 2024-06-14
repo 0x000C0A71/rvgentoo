@@ -160,7 +160,9 @@ By default, OpenRC does not spawn a serial console once booted up. When observin
 
 ### How to enable an aggety serial console
 - Write an agetty config file similar to:
-```bash title:'/etc/conf.d/agetty.ttyS0'
+```bash
+# /etc/conf.d/agetty.ttyS0
+
 # make agetty quiet
 #quiet="yes"
 
