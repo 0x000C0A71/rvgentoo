@@ -69,9 +69,24 @@ Already done
 No such `USE_EXPAND` exists for riscv. Can be skipped.
 
 
-# Step 6: Installing a Kernel
+# Step 6: Installing a Kernel & other VF2 specific packages
+
+## Kernel
 This is mostly left for you to figure out. There are many different out of tree kernels for the VisionFive 2 and Gentoo offers a multitude of ways to install a kernel.
 I do somewhat maintain an ebuild port of the cwt kernels on [my overlay](https://github.com/0x000C0A71/rvgentoo) that pulls Starfive's kernel and applies cwt's patches to it as `sys-kernel/cwt-linux`. It builds and installs kernel sources, the kernel image and the initramfs, so no Genkernel or dracut is necessary. If you do not have a different approach in mind I recommend simply installing that.
+
+## Other VF2 specific packages
+There are some things that are still left to get the VF2's hardware running. Namely:
+- Firmware (`sys-firmware/visionfive2-firmware` from [my overlay](https://github.com/0x000C0A71/rvgentoo))
+- IMG gpu userspace driver (`media-libs/img-gpu` from [my overlay](https://github.com/0x000C0A71/rvgentoo))
+- 3rd party kernel modules (`sys-kernel/vf2-soft-3rdpart` from [my overlay](https://github.com/0x000C0A71/rvgentoo), setting the `modules-sign` USE flag is recommended)
+
+After these are installed, it is necessary to rebuild the initramfs. If you've installed the `sys-kernel/cwt-linux` kernel that can be done with
+
+```bash
+emerge --config sys-kernel/cwt-linux
+```
+
 
 # Step 7: Configuring U-Boot, our bootloader
 There might be a nice utility to generate a U-Boot config, but I don't care.
