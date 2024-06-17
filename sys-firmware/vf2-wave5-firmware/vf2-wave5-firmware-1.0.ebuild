@@ -29,6 +29,6 @@ src_install() {
 	insinto /lib/firmware
 	doins cnm/wave511_dec_fw.bin
 
-	insinto /etc/dracut.conf.d
+	insinto /usr/lib/dracut/dracut.conf.d
 	doins ${FILESDIR}/dracut-vf2-wave5-fw.conf
 }

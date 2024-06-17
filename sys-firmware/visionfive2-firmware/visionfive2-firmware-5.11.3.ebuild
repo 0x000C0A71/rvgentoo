@@ -51,7 +51,7 @@ src_install() {
 		doins -r ${fw_path}/aic8800-usb-wifi/aic8800DC
 
 		einfo "installing wifi configs..."
-		insinto /etc/dracut.conf.d
+		insinto /usr/lib/dracut/dracut.conf.d
 		doins ${FILESDIR}/dracut-conf-vf2fw-wifi.conf
 	fi
 
@@ -66,7 +66,7 @@ src_install() {
 
 
 		einfo "installing bluetooth configs..."
-		insinto /etc/dracut.conf.d
+		insinto /usr/lib/dracut/dracut.conf.d
 		doins ${FILESDIR}/dracut-conf-vf2fw-bluetooth.conf
 
 		# TODO:

@@ -23,10 +23,10 @@ BDEPEND=""
 src_install() {
 	insinto /lib/firmware/
 
-	doins target/lib/firmware/rgx.fw.36.50.54.182
-	doins target/lib/firmware/rgx.sh.36.50.54.182
+	doins "target/lib/firmware/rgx.fw.36.50.54.182"
+	doins "target/lib/firmware/rgx.sh.36.50.54.182"
 
-	insinto /etc/dracut.conf.d
+	insinto /usr/lib/dracut/dracut.conf.d
 	doins ${FILESDIR}/dracut-pvr-fw-r1.conf
 }
 
